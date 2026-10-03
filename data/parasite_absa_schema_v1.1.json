@@ -1,0 +1,858 @@
+{
+  "schema_name": "Parasite-ABSA",
+  "version": "1.1",
+  "film": {
+    "title": "Parasite",
+    "original_title": "기생죽 (Gisaengchung)",
+    "year": 2019,
+    "director": "Bong Joon-ho"
+  },
+  "format": "SemEval-style tuple: (sentence, category, target, polarity), where category = ENTITY#ATTRIBUTE",
+  "notes_on_examples": "All example sentences in this file are SYNTHETIC - written by the schema author to illustrate the category boundary. They are NOT quotations from any real review and must not be cited as data.",
+  "polarity_scheme": {
+    "positive": "The opinion holder evaluates the aspect favourably. Includes praise, admiration, and endorsement ('the score is extraordinary').",
+    "negative": "The opinion holder evaluates the aspect unfavourably. Includes criticism, disappointment, and dismissal ('the ending drags badly').",
+    "neutral": "The aspect is mentioned and is relevant to the review's evaluation, but no evaluative stance is expressed. Typically factual description, plot summary, or hedged observation ('the film shifts into thriller territory in its second hour'). Neutral is an annotation, not a fallback for 'unclear' - if polarity is genuinely undecidable, leave the tuple out and log it as a disagreement case.",
+    "conflict": "The SAME aspect in the SAME sentence (or clause pair) receives both favourable and unfavourable evaluation from the SAME opinion holder ('the premise is brilliant but the script wastes it' -> SCREENPLAY#STRUCTURE = conflict). Do NOT use conflict when two DIFFERENT aspects get opposite polarities - annotate those as two separate tuples.",
+    "semeval_compatibility": "'conflict' follows SemEval-2014 Task 4. SemEval-2015 Task 12 and SemEval-2016 Task 5 dropped it and use positive/negative/neutral only. For comparison with 2015/16 results, either exclude conflict tuples or report results with and without them."
+  },
+  "target_rules": {
+    "principle": "Named people (actors, characters, crew) are TARGETS under a shared category, never categories of their own. This keeps the category inventory small and comparable to prior work, while preserving entity-level detail for later aggregation.",
+    "target_value": "Use the surface form normalised to a canonical name from the roster below. If no named entity is mentioned, use target = 'NULL' (implicit target) or the aspect phrase actually used ('the score', 'the houses').",
+    "actor_vs_character": {
+      "rule_1": "Mention evaluates a PERFORMANCE (how it was played: delivery, physicality, restraint, range) -> ACTING#GENERAL, target = ACTOR name. 'Song Kang-ho plays Ki-taek with astonishing restraint' -> ACTING#GENERAL / Song Kang-ho / positive.",
+      "rule_2": "Mention evaluates the CONSTRUCTION of the role (how the person is written: coherence, depth, arc, believability, sympathy) -> CHARACTER#DESIGN, target = CHARACTER name. 'Yeon-kyo is written as gullible without ever becoming a cartoon' -> CHARACTER#DESIGN / Yeon-kyo / positive.",
+      "rule_3": "Mention describes an EVENT the character undergoes, as a plot beat -> STORY#PLOT, target = NULL or the character name. 'Ki-taek's breakdown at the party ends the film's comic register' -> STORY#PLOT.",
+      "ki_taek_breakdown_adjudication": "The brief's test case 'Ki-taek's breakdown' is genuinely three-way ambiguous and is resolved by the EVALUATIVE PREDICATE, not the noun phrase. (a) 'Song Kang-ho makes Ki-taek's breakdown devastating' -> ACTING#GENERAL (predicate judges the playing). (b) 'Ki-taek's breakdown is the only moment that feels unearned' -> CHARACTER#DESIGN if the complaint is about motivation/consistency, STORY#PLOT if the complaint is about where the beat falls in the narrative. (c) 'The film ends with Ki-taek's breakdown at the party' -> STORY#PLOT, neutral (description, no evaluation). Annotators must apply this test before defaulting.",
+      "character_as_proxy_for_theme": "When a character is discussed as an embodiment of a social argument rather than as a person ('the Parks are capital itself, incurious and clean'), annotate THEME#SOCIAL_COMMENTARY, not CHARACTER#DESIGN."
+    },
+    "roster": {
+      "director": [
+        "Bong Joon-ho"
+      ],
+      "writers": [
+        "Bong Joon-ho",
+        "Han Jin-won"
+      ],
+      "crew": {
+        "Hong Kyung-pyo": "cinematography",
+        "Jung Jae-il": "score",
+        "Lee Ha-jun": "production design",
+        "Yang Jin-mo": "editing",
+        "Darcy Paquet": "English subtitles"
+      },
+      "actor_to_character": {
+        "Song Kang-ho": "Ki-taek",
+        "Jang Hye-jin": "Chung-sook",
+        "Choi Woo-shik": "Ki-woo",
+        "Park So-dam": "Ki-jung",
+        "Lee Sun-kyun": "Dong-ik",
+        "Cho Yeo-jeong": "Yeon-kyo",
+        "Jung Ji-so": "Da-hye",
+        "Jung Hyeon-jun": "Da-song",
+        "Lee Jung-eun": "Moon-gwang",
+        "Park Myung-hoon": "Geun-sae"
+      },
+      "family_groups": {
+        "Kim family": [
+          "Ki-taek",
+          "Chung-sook",
+          "Ki-woo",
+          "Ki-jung"
+        ],
+        "Park family": [
+          "Dong-ik",
+          "Yeon-kyo",
+          "Da-hye",
+          "Da-song"
+        ]
+      }
+    }
+  },
+  "categories": [
+    {
+      "id": "MOVIE#GENERAL",
+      "name": "Overall judgement",
+      "definition": "A holistic evaluation of the film as a single object, with no identifiable craft aspect attached. The catch-all required by the brief.",
+      "include": [
+        "Global verdicts: 'a masterpiece', 'the best film of the year', 'overrated'",
+        "Recommendation / non-recommendation speech acts",
+        "Star-rating prose equivalents ('five stars', 'essential viewing')",
+        "Comparative ranking of the film as a whole against other films or against Bong's filmography"
+      ],
+      "exclude": [
+        "Any verdict that names a craft aspect - route to that aspect instead ('beautifully shot' -> CINEMATOGRAPHY#GENERAL)",
+        "Judgements about the film's AWARDS or discourse -> RECEPTION#AWARDS",
+        "Judgements about wanting to see it again -> MOVIE#REWATCHABILITY"
+      ],
+      "examples_synthetic": [
+        "Parasite is the rare film that earns every superlative thrown at it. [positive]",
+        "Stripped of the hype, it is a competent genre exercise and nothing more. [negative]",
+        "Parasite is a film that sets out to work as entertainment and as argument at the same time. [neutral]"
+      ],
+      "confusions": [
+        "vs RECEPTION#AWARDS: 'deserves the Palme d'Or' evaluates the FILM (MOVIE#GENERAL); 'the Palme jury got it right' evaluates the AWARD process (RECEPTION#AWARDS).",
+        "vs MOVIE#REWATCHABILITY: 'a great film' = MOVIE#GENERAL; 'a film that rewards a second viewing' = MOVIE#REWATCHABILITY.",
+        "Default-category risk: MOVIE#GENERAL absorbs lazy annotation. Rule - if a more specific category applies, it wins; MOVIE#GENERAL only when NO aspect is recoverable."
+      ],
+      "prior_work": {
+        "zhuang_2006": "OA",
+        "thet_2010": "overall",
+        "parkhe_2014": "movie",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "STORY#PLOT",
+      "name": "Plot and premise",
+      "definition": "The events of the narrative and the premise that generates them: the infiltration scheme, the sequence of incidents, narrative logic and plausibility.",
+      "include": [
+        "Evaluation of the premise or setup ('the con-artist premise is irresistible')",
+        "Evaluation of specific plot beats: the 'Jessica' scheme, the peach, the flood, the birthday-party climax",
+        "Narrative coherence, plausibility, contrivance, plot holes",
+        "Spoiler-free or spoiler-heavy recounting of events (polarity = neutral when purely descriptive)"
+      ],
+      "exclude": [
+        "The bunker reveal specifically -> STORY#TWIST",
+        "The final sequence / coda -> STORY#ENDING",
+        "How fast or slow events unfold -> STORY#PACING",
+        "What the events MEAN socially -> THEME#SOCIAL_COMMENTARY",
+        "The quality of the WRITING that produced the plot -> SCREENPLAY#STRUCTURE"
+      ],
+      "examples_synthetic": [
+        "The scheme by which the Kims replace the Park household staff one by one is engineered with gleeful precision. [positive]",
+        "Too much of the second act depends on the Parks being improbably incurious about the people in their home. [negative]",
+        "A poor family's son takes a tutoring job at a wealthy household and gradually installs his relatives there. [neutral]"
+      ],
+      "confusions": [
+        "vs SCREENPLAY#STRUCTURE: the distinction is object of evaluation. 'The plot is full of holes' = STORY#PLOT (the story world). 'The script leaves its own holes unpatched' = SCREENPLAY#STRUCTURE (the craft). When a sentence is ambiguous, prefer STORY#PLOT unless the sentence names script/screenplay/writing explicitly.",
+        "vs THEME#SOCIAL_COMMENTARY: 'the flood destroys their home' = plot; 'the flood is the film's clearest statement that catastrophe is means-tested' = theme.",
+        "vs STORY#TWIST: only the mid-film bunker reveal (and any discussion of it AS a twist) goes to STORY#TWIST."
+      ],
+      "prior_work": {
+        "zhuang_2006": "ST",
+        "thet_2010": "story",
+        "parkhe_2014": "plot",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "STORY#TWIST",
+      "name": "The mid-film reveal",
+      "definition": "The bunker reveal and the film's structural hinge: the discovery of Geun-sae, the return of Moon-gwang, and the resulting tonal and generic rupture - discussed AS a turn or reveal.",
+      "include": [
+        "Evaluation of the reveal's effectiveness, surprise, timing, or earned-ness",
+        "Meta-comment on spoilers and on reviewing the film without describing the turn",
+        "Comment on the film 'becoming another movie' at the midpoint, where the REVEAL is the stated cause"
+      ],
+      "exclude": [
+        "Other plot beats -> STORY#PLOT",
+        "The ending -> STORY#ENDING",
+        "The genre shift discussed as a general property of Bong's mode, without reference to the reveal -> STORY#GENRE"
+      ],
+      "examples_synthetic": [
+        "The doorbell that rings halfway through resets the entire film, and Bong has earned every second of the shock. [positive]",
+        "The basement reveal is a cheap jolt that trades a sharp class comedy for a haunted-house gimmick. [negative]",
+        "Roughly an hour in, the arrival of the former housekeeper redirects the story. [neutral]"
+      ],
+      "confusions": [
+        "vs STORY#GENRE: STORY#TWIST is the EVENT; STORY#GENRE is the MODE. A sentence crediting the reveal for the tonal shift gets STORY#TWIST; a sentence describing the film as a comedy-thriller hybrid without the reveal gets STORY#GENRE. Sentences that clearly do both get two tuples.",
+        "Separated from STORY#PLOT rather than merged because the brief names it explicitly and because reviewer sentiment about the reveal is often opposite in sign to sentiment about the surrounding plot."
+      ],
+      "prior_work": {
+        "zhuang_2006": "ST (partial)",
+        "thet_2010": "story (partial)",
+        "parkhe_2014": "plot (partial)",
+        "status": "refinement - no prior work separates the twist"
+      }
+    },
+    {
+      "id": "STORY#ENDING",
+      "name": "Ending and coda",
+      "definition": "The final movement: the birthday-party aftermath, Ki-woo's letter and the fantasy coda of buying the house, and the closing images.",
+      "include": [
+        "Evaluation of the ending's power, bleakness, ambiguity, or length",
+        "Evaluation of the fantasy/dream coda specifically",
+        "Claims that the ending does or does not resolve the film's argument"
+      ],
+      "exclude": [
+        "The climax treated as plot mechanics rather than closure -> STORY#PLOT",
+        "'It stayed with me for days' -> MOVIE#GENERAL (implicit overall), unless the ending is named",
+        "The ending's political meaning -> THEME#SOCIAL_COMMENTARY"
+      ],
+      "examples_synthetic": [
+        "That final dissolve from fantasy back to the basement is the most quietly devastating image of the year. [positive]",
+        "The coda overstays by a good ten minutes, spelling out a point the film had already made wordlessly. [negative]",
+        "The film closes on Ki-woo composing a letter to his father. [neutral]"
+      ],
+      "confusions": [
+        "vs STORY#PACING: 'the ending drags' is a pacing complaint LOCALISED to the ending - annotate STORY#ENDING (the aspect under evaluation) and not STORY#PACING, which is reserved for the film's overall rhythm.",
+        "vs THEME#SYMBOLISM: the stone's disposal in the closing stretch is STORY#ENDING if discussed as closure, THEME#SYMBOLISM if discussed as a motif."
+      ],
+      "prior_work": {
+        "zhuang_2006": "ST (partial)",
+        "thet_2010": "story (partial)",
+        "parkhe_2014": "plot (partial)",
+        "status": "refinement - no prior work separates the ending"
+      }
+    },
+    {
+      "id": "STORY#PACING",
+      "name": "Pacing and structure",
+      "definition": "The film's overall rhythm and temporal shape: momentum, runtime, act balance, whether it sags or accelerates.",
+      "include": [
+        "Runtime judgements ('never feels like 132 minutes')",
+        "Momentum claims ('propulsive', 'drags in the middle')",
+        "Act-balance claims ('the first hour is tighter than the second')"
+      ],
+      "exclude": [
+        "Shot-to-shot rhythm and cutting -> EDITING#GENERAL",
+        "Slowness localised to the ending -> STORY#ENDING",
+        "Suspense built over time -> TONE#TENSION"
+      ],
+      "examples_synthetic": [
+        "It moves like a thriller from the first frame and never once slackens. [positive]",
+        "The middle hour sags under repetition before the party finally arrives. [negative]",
+        "The film is structured in two distinct halves of roughly equal length. [neutral]"
+      ],
+      "confusions": [
+        "vs EDITING#GENERAL: pacing is felt duration at the level of the whole film; editing is the visible craft of cuts and transitions. 'Yang Jin-mo's cutting keeps it taut' = EDITING#GENERAL; 'it never drags' = STORY#PACING.",
+        "vs TONE#TENSION: 'unbearably tense' is tone, not pace, even though both concern time."
+      ],
+      "prior_work": {
+        "zhuang_2006": "ST (partial)",
+        "thet_2010": "story (partial)",
+        "parkhe_2014": "plot (partial)",
+        "status": "refinement - treated as part of story in all three"
+      }
+    },
+    {
+      "id": "STORY#GENRE",
+      "name": "Genre blend",
+      "definition": "The film's mode and its mixing or migration: dark comedy, satire, thriller, horror, melodrama, tragedy - and whether the hybrid holds together.",
+      "include": [
+        "Genre labels applied to the film and evaluated",
+        "Claims about genre-shifting, hybridity, unclassifiability",
+        "Comparisons to genre traditions ('a home-invasion film inverted')"
+      ],
+      "exclude": [
+        "The reveal that triggers the shift -> STORY#TWIST",
+        "Whether individual jokes land -> TONE#HUMOR",
+        "Whether suspense works -> TONE#TENSION"
+      ],
+      "examples_synthetic": [
+        "It is a farce, a heist picture, a ghost story and a tragedy, and the seams never show. [positive]",
+        "The lurch from social comedy to slasher is whiplash, not design. [negative]",
+        "The film has been described variously as a black comedy and a thriller. [neutral]"
+      ],
+      "confusions": [
+        "vs TONE#HUMOR and TONE#TENSION: STORY#GENRE is about the CATEGORY the film belongs to; TONE#* is about the AFFECT produced. 'A very funny film' = TONE#HUMOR; 'a comedy' being evaluated as a comedy = STORY#GENRE.",
+        "vs MOVIE#GENERAL: 'unclassifiable' alone is a genre claim, not an overall verdict."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "THEME#SOCIAL_COMMENTARY",
+      "name": "Class politics and satire",
+      "definition": "The film's argument about class, inequality, capitalism and social mobility, and the quality or force of that argument as social critique.",
+      "include": [
+        "Evaluation of the critique's sharpness, nuance, didacticism, or timeliness",
+        "Claims about who the film blames or spares",
+        "Discussion of characters as embodiments of class positions",
+        "Satire assessed as satire (its bite, not its jokes)"
+      ],
+      "exclude": [
+        "The IMAGERY that carries the argument -> THEME#SYMBOLISM",
+        "Korea-specific social facts and their legibility abroad -> CULTURAL_CONTEXT#GENERAL",
+        "Plot events themselves -> STORY#PLOT",
+        "Whether the satire is funny -> TONE#HUMOR"
+      ],
+      "examples_synthetic": [
+        "Bong refuses the easy move of making the rich monstrous, and the film's class critique is far more damaging for it. [positive]",
+        "Its politics amount to a shrug: everyone is complicit, therefore no one is. [negative]",
+        "The film sets a family living in a semi-basement against the household that employs them. [neutral]"
+      ],
+      "confusions": [
+        "vs THEME#SYMBOLISM: content vs vehicle. 'The film argues that poverty is inescapable' = SOCIAL_COMMENTARY; 'the staircases encode that argument' = SYMBOLISM. Many sentences warrant both tuples; annotate both rather than forcing a choice.",
+        "vs CULTURAL_CONTEXT#GENERAL: universal class argument = SOCIAL_COMMENTARY; specifically Korean referents (banjiha housing, Taiwanese castella-shop collapse, private-tutoring culture) = CULTURAL_CONTEXT.",
+        "Descriptive vs evaluative: a sentence that merely states the theme exists is neutral. See hard_cases.theme_descriptive_vs_evaluative."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "THEME#SYMBOLISM",
+      "name": "Symbolism and motifs",
+      "definition": "The film's recurring images and figurative devices: verticality (stairs, the hill, semi-basement vs. the Park house), smell as a class marker, water and flood, the scholar's stone (suseok), the 'plan' motif, windows, light.",
+      "include": [
+        "Evaluation of a motif's effectiveness, subtlety, or heavy-handedness",
+        "Identification and reading of symbols",
+        "Discussion of verticality as a spatial-symbolic system"
+      ],
+      "exclude": [
+        "The physical sets and how they were built or shot -> PRODUCTION_DESIGN#GENERAL",
+        "The composition of a shot -> CINEMATOGRAPHY#GENERAL",
+        "The social claim the symbol serves -> THEME#SOCIAL_COMMENTARY"
+      ],
+      "examples_synthetic": [
+        "Smell is the film's masterstroke: the one class marker that no amount of mimicry can scrub away. [positive]",
+        "The up-and-down staircase symbolism is laid on with a trowel. [negative]",
+        "Water runs downhill through the film, from the Park lawn to the Kims' flooded toilet. [neutral]"
+      ],
+      "confusions": [
+        "vs PRODUCTION_DESIGN#GENERAL: the hardest boundary in this schema. Rule - if the sentence evaluates the house AS A BUILT OBJECT (design, layout, construction, how it looks), it is PRODUCTION_DESIGN; if it reads the house AS A SIGN (what the levels mean), it is SYMBOLISM. 'Lee Ha-jun's house is a magnificent set' = PRODUCTION_DESIGN. 'The house is a diagram of the class system' = SYMBOLISM.",
+        "vs CINEMATOGRAPHY#GENERAL: 'Hong shoots the stairs from below to make them loom' = CINEMATOGRAPHY (plus optionally SYMBOLISM)."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "CHARACTER#DESIGN",
+      "name": "Characterisation",
+      "definition": "The characters as written constructs: depth, coherence, sympathy, arc, believability, ensemble balance. Target = character name.",
+      "include": [
+        "Evaluation of a character's writing, motivation, or development",
+        "Claims about ensemble balance ('no one in either family is a type')",
+        "Sympathy and allegiance claims ('the film never asks us to despise the Parks')"
+      ],
+      "exclude": [
+        "How the role was PLAYED -> ACTING#GENERAL",
+        "What happens TO the character -> STORY#PLOT",
+        "The character as a class symbol -> THEME#SOCIAL_COMMENTARY"
+      ],
+      "examples_synthetic": [
+        "Ki-jung is the sharpest creation here, a forger of documents and of selves, and the film trusts her completely. [positive]",
+        "Da-song exists only to be a plot device, and the writing never gives him an interior. [negative]",
+        "The Kim family comprises an unemployed father, a mother, a son and a daughter. [neutral]"
+      ],
+      "confusions": [
+        "vs ACTING#GENERAL: see target_rules.actor_vs_character. The reliable cue is whether the named entity is the ACTOR (acting) or the CHARACTER (design) - but override that cue when the predicate clearly judges the other thing ('Choi Woo-shik's Ki-woo is underwritten' = CHARACTER#DESIGN despite naming the actor).",
+        "Retained as its own category - unlike Thet (2010), which folds characters into 'cast' - because Parasite reviews routinely praise the writing of the ensemble while barely mentioning performances, and merging would make those two signals indistinguishable."
+      ],
+      "prior_work": {
+        "zhuang_2006": "CH",
+        "thet_2010": "cast (inferred: Thet's aspect word lists were not available to verify whether characters fall under 'cast' or 'story')",
+        "parkhe_2014": "none",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "ACTING#GENERAL",
+      "name": "Performances",
+      "definition": "The quality of the acting: delivery, physicality, restraint, range, ensemble chemistry. Target = actor name, or 'the cast' / 'the ensemble' / 'supporting cast' when collective.",
+      "include": [
+        "Praise or criticism of a named performance",
+        "Collective assessments of the cast",
+        "Comparisons to the actor's other work ('Song's best since Memories of Murder')"
+      ],
+      "exclude": [
+        "How the role is written -> CHARACTER#DESIGN",
+        "Direction of actors, when credited to Bong -> DIRECTION#GENERAL"
+      ],
+      "examples_synthetic": [
+        "Song Kang-ho does extraordinary work in the last half-hour, holding humiliation and murder in the same still face. [positive]",
+        "Cho Yeo-jeong pitches Yeon-kyo so broadly that the satire curdles into caricature. [negative]",
+        "The performances are pitched at a heightened, slightly theatrical register. [neutral]"
+      ],
+      "confusions": [
+        "vs CHARACTER#DESIGN: see above.",
+        "vs DIRECTION#GENERAL: 'Bong gets career-best work from his cast' names DIRECTION as the cause and ACTING as the effect. Annotate DIRECTION#GENERAL / Bong Joon-ho / positive AND ACTING#GENERAL / the cast / positive."
+      ],
+      "prior_work": {
+        "zhuang_2006": "PAC",
+        "thet_2010": "cast",
+        "parkhe_2014": "acting",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "DIRECTION#GENERAL",
+      "name": "Direction",
+      "definition": "Bong Joon-ho's authorial control: orchestration of tone, command of the ensemble and of the camera, confidence, authorial signature, and placement within his filmography.",
+      "include": [
+        "Evaluation of Bong's control, assurance, or ambition",
+        "Comparisons to his other films AS directorial development ('his most controlled work')",
+        "Credit for the film's overall coherence assigned to the director"
+      ],
+      "exclude": [
+        "The script, even though Bong co-wrote it -> SCREENPLAY#*",
+        "The images themselves -> CINEMATOGRAPHY#GENERAL",
+        "The film as an object -> MOVIE#GENERAL"
+      ],
+      "examples_synthetic": [
+        "Bong Joon-ho directs with the unhurried confidence of someone who knows exactly where every door in this house leads. [positive]",
+        "Bong's control slips in the final act, where he seems unsure which of his three films he is finishing. [negative]",
+        "Bong stages most of the action inside a single house. [neutral]"
+      ],
+      "confusions": [
+        "vs MOVIE#GENERAL: 'Bong has made a masterpiece' - the evaluated object is the FILM, so MOVIE#GENERAL. 'Bong directs like a master' - the object is the DIRECTING, so DIRECTION#GENERAL.",
+        "vs SCREENPLAY#STRUCTURE: Bong is both writer and director, so a bare 'Bong' is ambiguous. Rule - route by the evaluated noun: 'Bong's script' = SCREENPLAY, 'Bong's staging/camera/control' = DIRECTION, bare 'Bong's film' = MOVIE#GENERAL."
+      ],
+      "prior_work": {
+        "zhuang_2006": "PDR",
+        "thet_2010": "director",
+        "parkhe_2014": "direction",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "SCREENPLAY#STRUCTURE",
+      "name": "Screenplay craft",
+      "definition": "The script as written craft: construction, setup and payoff, economy, escalation, how information is withheld and released. Credited to Bong Joon-ho and/or Han Jin-won.",
+      "include": [
+        "Evaluation of the screenplay, script, or writing by name",
+        "Setup/payoff and foreshadowing craft ('every object planted in the first hour detonates in the third')",
+        "Screenwriting-award framing when about craft rather than prestige"
+      ],
+      "exclude": [
+        "The events themselves -> STORY#PLOT",
+        "Specific lines and exchanges -> SCREENPLAY#DIALOGUE",
+        "The Original Screenplay Oscar as prestige -> RECEPTION#AWARDS"
+      ],
+      "examples_synthetic": [
+        "The screenplay by Bong and Han Jin-won is a machine of setups and payoffs in which nothing is wasted. [positive]",
+        "For all its cleverness the script cannot decide whether it wants us to laugh at the Kims or weep for them. [negative]",
+        "The script divides the story into a con and its consequences. [neutral]"
+      ],
+      "confusions": [
+        "vs STORY#PLOT: see STORY#PLOT confusions. Named mention of script/screenplay/writing is the trigger for this category.",
+        "vs SCREENPLAY#DIALOGUE: structure is architecture; dialogue is line-level. 'The script is tight' = STRUCTURE; 'the lines are quotable' = DIALOGUE."
+      ],
+      "prior_work": {
+        "zhuang_2006": "ST / PSC",
+        "thet_2010": "story (partial)",
+        "parkhe_2014": "screenplay",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "SCREENPLAY#DIALOGUE",
+      "name": "Dialogue",
+      "definition": "Line-level writing: individual exchanges, wit, naturalism, memorable lines, verbal texture.",
+      "include": [
+        "Evaluation of specific lines or exchanges",
+        "Claims about naturalism or stiltedness of speech",
+        "Quotability, e.g. the exchange 'They're rich but still nice.' / 'They're nice because they're rich.'"
+      ],
+      "exclude": [
+        "Script architecture -> SCREENPLAY#STRUCTURE",
+        "How the lines were DELIVERED -> ACTING#GENERAL",
+        "How the lines were RENDERED IN ENGLISH -> TRANSLATION#SUBTITLES"
+      ],
+      "examples_synthetic": [
+        "Chung-sook's retort that the Parks are nice because they're rich is the most efficient piece of class analysis in recent cinema. [positive]",
+        "Too many exchanges stop the film dead to explain what we have already seen. [negative]",
+        "Much of the dialogue takes place in the Parks' living room. [neutral]"
+      ],
+      "confusions": [
+        "vs TRANSLATION#SUBTITLES: if a sentence praises a line as English readers encountered it AND names subtitles or translation, annotate TRANSLATION#SUBTITLES; if it treats the line as the film's own writing, annotate DIALOGUE. 'Darcy Paquet's rendering of ram-don' = TRANSLATION.",
+        "Candidate for merger into SCREENPLAY#STRUCTURE if it falls below the 2% frequency floor - see merge_policy."
+      ],
+      "prior_work": {
+        "zhuang_2006": "ST (partial)",
+        "thet_2010": "none",
+        "parkhe_2014": "screenplay (partial)",
+        "status": "refinement"
+      }
+    },
+    {
+      "id": "CINEMATOGRAPHY#GENERAL",
+      "name": "Cinematography",
+      "definition": "The images: framing, camera movement, lighting, colour, lens choices, the look of the film. Target = Hong Kyung-pyo where named. Includes judgements of the black-and-white version AS AN IMAGE TREATMENT.",
+      "include": [
+        "Evaluation of shots, compositions, camera movement, lighting, colour grading",
+        "'Visually stunning' and similar image-level verdicts",
+        "The monochrome edition discussed as a photographic choice"
+      ],
+      "exclude": [
+        "What is IN the frame as built environment -> PRODUCTION_DESIGN#GENERAL",
+        "What an image MEANS -> THEME#SYMBOLISM",
+        "Cutting -> EDITING#GENERAL"
+      ],
+      "examples_synthetic": [
+        "Hong Kyung-pyo's camera glides down through the levels of the Park house as if gravity were a plot device. [positive]",
+        "The flood sequence is shot so murkily that the geography of the scene collapses. [negative]",
+        "The camera favours wide, symmetrical compositions of the Park living room. [neutral]"
+      ],
+      "confusions": [
+        "vs PRODUCTION_DESIGN#GENERAL: 'the house looks magnificent' is ambiguous between the SET and the PHOTOGRAPHY of it. Rule - if the sentence names camera, shot, framing, light or a cinematographer, choose CINEMATOGRAPHY; if it names set, design, architecture, space or a designer, choose PRODUCTION_DESIGN; if neither and the noun is the house itself, choose PRODUCTION_DESIGN.",
+        "Absorbs Zhuang's VP and SE: Parasite has almost no discussed special effects, so a separate SE category would sit near zero. See merge_policy.dropped."
+      ],
+      "prior_work": {
+        "zhuang_2006": "VP / PTC (cameraman)",
+        "thet_2010": "scene",
+        "parkhe_2014": "none",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "PRODUCTION_DESIGN#GENERAL",
+      "name": "Production design",
+      "definition": "The built environment: the Park house and the Kim semi-basement as designed spaces, the bunker, set layout and geography, props and costume. Target = Lee Ha-jun where named.",
+      "include": [
+        "Evaluation of the two houses as sets or architecture",
+        "Spatial legibility ('you always know where you are in that house')",
+        "Props as designed objects, costume, the fact that the Park house was purpose-built"
+      ],
+      "exclude": [
+        "The meaning of the levels -> THEME#SYMBOLISM",
+        "How the space is photographed -> CINEMATOGRAPHY#GENERAL"
+      ],
+      "examples_synthetic": [
+        "Lee Ha-jun's Park residence is the year's great feat of design: a building that is also an argument. [positive]",
+        "The bunker set is a generic horror basement that belongs to a lesser film. [negative]",
+        "The Park house was built from scratch on a back lot rather than found on location. [neutral]"
+      ],
+      "confusions": [
+        "vs THEME#SYMBOLISM: see THEME#SYMBOLISM confusions. Note the example above ('a building that is also an argument') legitimately warrants BOTH tuples.",
+        "vs CINEMATOGRAPHY#GENERAL: see above."
+      ],
+      "prior_work": {
+        "zhuang_2006": "PTC (set designer) / VP",
+        "thet_2010": "scene (partial)",
+        "parkhe_2014": "none",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "MUSIC#GENERAL",
+      "name": "Score and sound",
+      "definition": "Jung Jae-il's score and the film's sound design: themes, instrumentation, how music is deployed against image, sound effects and mixing.",
+      "include": [
+        "Evaluation of the score or specific cues",
+        "Sound design and mixing",
+        "Diegetic music and the use of silence"
+      ],
+      "exclude": [
+        "Tension created primarily by means other than music -> TONE#TENSION"
+      ],
+      "examples_synthetic": [
+        "Jung Jae-il's baroque piano turns a housekeeping montage into a heist and then into a requiem. [positive]",
+        "The score telegraphs every shift in register, leaving the images nothing to do. [negative]",
+        "The score leans on baroque-style piano and strings. [neutral]"
+      ],
+      "confusions": [
+        "vs TONE#TENSION: credit music explicitly? MUSIC#GENERAL. Only the resulting dread named? TONE#TENSION. Both named? two tuples.",
+        "Zhuang separates MS (music as element) from PMS (music people); this schema collapses both into MUSIC#GENERAL with the composer as TARGET, per the target_rules principle."
+      ],
+      "prior_work": {
+        "zhuang_2006": "MS / PMS",
+        "thet_2010": "music",
+        "parkhe_2014": "music",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "EDITING#GENERAL",
+      "name": "Editing",
+      "definition": "The cutting: shot transitions, montage construction, rhythm at the level of the cut, cross-cutting. Target = Yang Jin-mo where named.",
+      "include": [
+        "Evaluation of cuts, transitions, montage sequences",
+        "The infiltration montage and the flood cross-cutting as edited constructions",
+        "Claims about tightness or raggedness of the cutting"
+      ],
+      "exclude": [
+        "Felt duration of the whole film -> STORY#PACING",
+        "Runtime -> STORY#PACING"
+      ],
+      "examples_synthetic": [
+        "Yang Jin-mo's cutting in the montage sequence is a small miracle of compression. [positive]",
+        "The cross-cutting during the party is choppy enough to blunt the climax. [negative]",
+        "The infiltration of the household is presented as a single extended montage. [neutral]"
+      ],
+      "confusions": [
+        "vs STORY#PACING: see STORY#PACING confusions.",
+        "Expected to be rare in critic reviews and is a prime merge candidate - see merge_policy."
+      ],
+      "prior_work": {
+        "zhuang_2006": "PTC (editor)",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "mapped"
+      }
+    },
+    {
+      "id": "TONE#HUMOR",
+      "name": "Humour",
+      "definition": "The comedy as affect: whether the film is funny, the texture of its jokes, farce and slapstick, comic timing.",
+      "include": [
+        "Claims that the film is or is not funny",
+        "Evaluation of specific comic sequences (the ram-don preparation, the 'Jessica' jingle, the hiding-under-the-table farce)",
+        "Comic timing"
+      ],
+      "exclude": [
+        "The film's identity as a comedy -> STORY#GENRE",
+        "The satire's political bite -> THEME#SOCIAL_COMMENTARY"
+      ],
+      "examples_synthetic": [
+        "The 'Jessica, only child, Illinois, Chicago' jingle is the funniest thing in any film this year. [positive]",
+        "The comedy is broad to the point of sitcom, and it undercuts everything that follows. [negative]",
+        "The first half is played largely for laughs. [neutral]"
+      ],
+      "confusions": [
+        "vs THEME#SOCIAL_COMMENTARY: 'savagely funny about wealth' warrants both tuples - HUMOR for 'funny', SOCIAL_COMMENTARY for 'about wealth'.",
+        "vs STORY#GENRE: see STORY#GENRE confusions."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "TONE#TENSION",
+      "name": "Tension and dread",
+      "definition": "Suspense, dread, discomfort and shock as affect: how gripping or unsettling the film is.",
+      "include": [
+        "Claims about suspense, tension, dread, unease, shock",
+        "Physical-response claims ('I was holding my breath')",
+        "Evaluation of the thriller and horror mechanics as experience"
+      ],
+      "exclude": [
+        "Genre labels -> STORY#GENRE",
+        "Tension credited to the score -> MUSIC#GENERAL (plus this category if both named)",
+        "Pace -> STORY#PACING"
+      ],
+      "examples_synthetic": [
+        "By the time the family is crawling out from under that table, the tension is almost unbearable. [positive]",
+        "It aims for dread and achieves only squirming discomfort. [negative]",
+        "The second half operates largely in a register of suspense. [neutral]"
+      ],
+      "confusions": [
+        "vs TONE#HUMOR: the two frequently co-occur in one sentence ('hilarious and then terrifying') and should yield two tuples, not one conflict.",
+        "Note: conflict polarity is NOT appropriate for 'funny then frightening' - those are two aspects, each positive."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "TRANSLATION#SUBTITLES",
+      "name": "Subtitles and translation",
+      "definition": "The English subtitles and translation choices, subtitle readability, and the broader question of watching the film in translation. Target = Darcy Paquet where named.",
+      "include": [
+        "Evaluation of specific translation choices (ram-don/jjapaguri, 'Oxford' for Seoul National University)",
+        "Subtitle quality, timing, legibility",
+        "Meta-commentary on subtitle aversion among anglophone audiences"
+      ],
+      "exclude": [
+        "The Korean dialogue as writing -> SCREENPLAY#DIALOGUE",
+        "Korean social referents -> CULTURAL_CONTEXT#GENERAL",
+        "The dubbed or black-and-white editions as releases -> MOVIE#GENERAL"
+      ],
+      "examples_synthetic": [
+        "Darcy Paquet's subtitles are a quiet triumph, finding English equivalents that carry the class sting intact. [positive]",
+        "Rendering jjapaguri as 'ram-don' invents a dish that exists in no kitchen and flattens the joke. [negative]",
+        "The English subtitles substitute Western equivalents for several Korean brand and place names. [neutral]"
+      ],
+      "confusions": [
+        "vs CULTURAL_CONTEXT#GENERAL: translation concerns the LANGUAGE transfer; cultural context concerns the SOCIAL knowledge required. 'You need to know what a banjiha is' = CULTURAL_CONTEXT; 'the subtitles call it a semi-basement' = TRANSLATION.",
+        "Expected to be rare in critic reviews; prime merge candidate - see merge_policy."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "CULTURAL_CONTEXT#GENERAL",
+      "name": "Korean context and universality",
+      "definition": "The film's Korean specificity and its travel: local social referents, and claims about universal versus culturally bounded legibility.",
+      "include": [
+        "Korean social and economic referents (banjiha semi-basements, the private-tutoring (gwaoe) economy, youth unemployment, the Taiwanese castella cake-shop boom and bust)",
+        "Claims that the film is universal, or that it is specifically Korean",
+        "The film's position in Korean cinema and relation to other Korean films",
+        "Comment on anglophone audiences' access to the material"
+      ],
+      "exclude": [
+        "Subtitles -> TRANSLATION#SUBTITLES",
+        "The general class argument -> THEME#SOCIAL_COMMENTARY",
+        "Awards discourse about a Korean film winning -> RECEPTION#AWARDS"
+      ],
+      "examples_synthetic": [
+        "The film is rooted in the specifics of Seoul's semi-basement housing and is all the more universal for refusing to translate them. [positive]",
+        "Much of its social texture will simply not register outside Korea, and the film makes no accommodation. [negative]",
+        "Semi-basement flats of the kind the Kims occupy are a common and legally recognised housing type in Seoul. [neutral]"
+      ],
+      "confusions": [
+        "vs THEME#SOCIAL_COMMENTARY: the test is whether the sentence requires LOCAL knowledge to parse. 'Inequality is universal' = SOCIAL_COMMENTARY; 'banjiha housing is a Korean particular' = CULTURAL_CONTEXT.",
+        "vs RECEPTION#AWARDS: 'the first Korean film to win the Palme' is awards discourse, not cultural context."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "RECEPTION#AWARDS",
+      "name": "Awards, hype and discourse",
+      "definition": "The film's reception as a phenomenon: Palme d'Or and Oscars, festival buzz, box office, critical consensus, backlash and 'overrated' debates. The evaluated object is the DISCOURSE, not the film.",
+      "include": [
+        "Evaluation of awards outcomes and campaigns",
+        "Hype, buzz, expectation management, backlash",
+        "Box office and distribution as phenomena",
+        "Claims about the critical consensus itself"
+      ],
+      "exclude": [
+        "'It deserves the Oscar' -> MOVIE#GENERAL (evaluates the film)",
+        "Screenwriting-craft praise that happens to mention the Oscar -> SCREENPLAY#STRUCTURE",
+        "Korean cinema's standing generally -> CULTURAL_CONTEXT#GENERAL"
+      ],
+      "examples_synthetic": [
+        "For once the awards machinery has landed on the right film, and the Palme d'Or looks prescient rather than fashionable. [positive]",
+        "The Oscar campaign has buried the film under a discourse it never asked for, and the backlash is now louder than the praise. [negative]",
+        "Parasite won the Palme d'Or at Cannes in 2019 and four Academy Awards in 2020. [neutral]"
+      ],
+      "confusions": [
+        "vs MOVIE#GENERAL: the single most important distinction here. Ask what the sentence judges - the FILM or the PRIZE/CONVERSATION. See hard_cases.oscars_vs_film.",
+        "Hype sentences are often structurally 'despite the hype, the film delivers' - that is TWO tuples: RECEPTION#AWARDS neutral-or-negative and MOVIE#GENERAL positive."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    },
+    {
+      "id": "MOVIE#REWATCHABILITY",
+      "name": "Rewatch value",
+      "definition": "Claims about repeat viewing: whether the film rewards, requires, or survives a second watch, and whether it changes on rewatch.",
+      "include": [
+        "Explicit rewatch intentions or recommendations",
+        "Claims that detail or foreshadowing emerges on a second viewing",
+        "Claims that the twist does not survive rewatching"
+      ],
+      "exclude": [
+        "Lingering-impression claims without reference to re-viewing -> MOVIE#GENERAL",
+        "Home-video and Blu-ray release facts -> MOVIE#GENERAL"
+      ],
+      "examples_synthetic": [
+        "I have seen it three times and it keeps handing over new detail; the first hour is dense with things you only catch later. [positive]",
+        "Once you know where the basement door leads there is embarrassingly little left to return for. [negative]",
+        "A second viewing changes how the early scenes in the Park house play. [neutral]"
+      ],
+      "confusions": [
+        "vs MOVIE#GENERAL: 'I could not stop thinking about it for days' is NOT rewatchability - it is an implicit overall judgement. See hard_cases.implicit_aspects.",
+        "Expected to be very rare in single-viewing critic reviews; prime merge candidate - see merge_policy."
+      ],
+      "prior_work": {
+        "zhuang_2006": "none",
+        "thet_2010": "none",
+        "parkhe_2014": "none",
+        "status": "new"
+      }
+    }
+  ],
+  "merge_policy": {
+    "frequency_floor": "A category whose share of all annotated mentions falls below 2% in the validation corpus is flagged as a merge candidate. Flagging is not automatic merging: a rare category is retained if (a) it is theoretically load-bearing for this film, and (b) its inter-annotator agreement is acceptable (kappa >= 0.6). A rare category with poor agreement is merged.",
+    "planned_merges_if_below_floor": {
+      "SCREENPLAY#DIALOGUE": "merge into SCREENPLAY#STRUCTURE",
+      "EDITING#GENERAL": "merge into a combined CRAFT#TECHNICAL with CINEMATOGRAPHY and PRODUCTION_DESIGN, or into CINEMATOGRAPHY#GENERAL",
+      "MOVIE#REWATCHABILITY": "merge into MOVIE#GENERAL",
+      "TRANSLATION#SUBTITLES": "merge into CULTURAL_CONTEXT#GENERAL",
+      "STORY#TWIST": "merge into STORY#PLOT",
+      "STORY#ENDING": "merge into STORY#PLOT"
+    },
+    "dropped_before_annotation": {
+      "SPECIAL_EFFECTS": "Zhuang (2006) defines SE as a separate feature class. Parasite's effects work (sets were built practically; digital work is largely invisible compositing and augmentation) is rarely discussed in reviews, so a dedicated SE category would sit at or near zero and cannot be annotated reliably. Any effects comment is routed to CINEMATOGRAPHY#GENERAL.",
+      "PRODUCER": "Zhuang defines PPR (producer). Producers are essentially never evaluated in consumer or critic film reviews; the category is unannotatable in practice. Production-company mentions are treated as non-opinion and left unannotated.",
+      "COSTUME_as_separate": "Folded into PRODUCTION_DESIGN#GENERAL - too rare to stand alone."
+    }
+  },
+  "hard_cases": {
+    "implicit_aspects": {
+      "rule": "A sentence with an evaluative stance but no explicit aspect term still gets a tuple, with target = 'NULL' and the category inferred from what is being evaluated. If nothing more specific is recoverable, use MOVIE#GENERAL.",
+      "examples_synthetic": [
+        "'I could not stop thinking about it for days.' -> MOVIE#GENERAL / NULL / positive (lingering impact = overall, NOT rewatchability).",
+        "'I will never look at a flight of stairs the same way.' -> THEME#SYMBOLISM / NULL / positive (the motif is recoverable).",
+        "'Two hours went by and I never checked my watch.' -> STORY#PACING / NULL / positive."
+      ]
+    },
+    "sarcasm_and_irony": {
+      "rule": "Annotate the INTENDED polarity, not the literal one. Require textual evidence of irony (scare quotes, overt exaggeration, a contradicting adjacent clause); do not infer sarcasm from world knowledge about the reviewer. If two annotators disagree on whether a sentence is ironic, the sentence goes to the adjudication set rather than being forced.",
+      "examples_synthetic": [
+        "'Another ‘searing indictment of capitalism’ from a film financed by a chaebol-adjacent studio.' -> THEME#SOCIAL_COMMENTARY / NULL / negative (scare quotes supply the ironic frame).",
+        "'Sure, and the ending is subtle too.' -> STORY#ENDING / NULL / negative, but ONLY if the preceding sentence establishes the ironic frame."
+      ]
+    },
+    "comparisons_to_other_films": {
+      "rule": "Comparisons are annotated only for what they say about PARASITE. A comparison target (Snowpiercer, Memories of Murder, Us, The Housemaid, Shoplifters) is never itself an annotation target, and sentiment about the other film is not recorded.",
+      "examples_synthetic": [
+        "'Sharper than Snowpiercer and less sentimental than Shoplifters.' -> MOVIE#GENERAL / NULL / positive. No tuple for Snowpiercer or Shoplifters.",
+        "'It reworks the class allegory of Snowpiercer in a single house.' -> THEME#SOCIAL_COMMENTARY / NULL / neutral (descriptive comparison, no evaluation).",
+        "'Like Us, it mistakes a metaphor for an argument.' -> THEME#SOCIAL_COMMENTARY / NULL / negative.",
+        "Special case - intra-director comparison about CRAFT goes to DIRECTION#GENERAL: 'his most assured work since Memories of Murder' -> DIRECTION#GENERAL / Bong Joon-ho / positive."
+      ]
+    },
+    "plot_summary_vs_opinion": {
+      "rule": "Plot summary without evaluation carries NO sentiment. Annotate it as the relevant STORY#* category with polarity = neutral, or omit it entirely under the corpus's chosen convention. This schema's convention: ANNOTATE as neutral, because neutral plot-summary spans are needed as negative examples for aspect-extraction training. Flag such spans with is_summary = true so they can be filtered out for polarity-classification training.",
+      "examples_synthetic": [
+        "'The Kims forge a university document to get Ki-woo the tutoring job.' -> STORY#PLOT / NULL / neutral, is_summary = true.",
+        "'The Kims forge a document in a sequence of beautifully escalating nerve.' -> STORY#PLOT / NULL / positive, is_summary = false."
+      ]
+    },
+    "mixed_sentiment_in_one_sentence": {
+      "rule": "Decompose first, conflict last. If the opposing polarities attach to DIFFERENT aspects, emit one tuple per aspect. Reserve conflict for a single aspect evaluated both ways. This ordering is mandatory - annotators default to conflict too readily, which destroys aspect-level signal.",
+      "examples_synthetic": [
+        "'Gorgeously shot but half an hour too long.' -> CINEMATOGRAPHY#GENERAL / NULL / positive AND STORY#PACING / NULL / negative. NOT conflict.",
+        "'The script is both its greatest strength and its undoing.' -> SCREENPLAY#STRUCTURE / NULL / conflict.",
+        "'Song Kang-ho is superb; everyone around him is adrift.' -> ACTING#GENERAL / Song Kang-ho / positive AND ACTING#GENERAL / supporting cast / negative. Two tuples under one category, distinguished by target - not conflict."
+      ]
+    },
+    "oscars_vs_film": {
+      "rule": "Determine the object of evaluation. Sentiment toward the AWARD, the campaign, the voters, the discourse or the hype -> RECEPTION#AWARDS. Sentiment toward the FILM that merely cites an award as evidence -> the aspect being evidenced (usually MOVIE#GENERAL).",
+      "examples_synthetic": [
+        "'The Academy finally did something defensible.' -> RECEPTION#AWARDS / Oscars / positive. No tuple for the film.",
+        "'A worthy Best Picture winner.' -> MOVIE#GENERAL / NULL / positive.",
+        "'Whatever you make of the Oscar sweep, the film itself is extraordinary.' -> RECEPTION#AWARDS / Oscars / neutral AND MOVIE#GENERAL / NULL / positive."
+      ]
+    },
+    "theme_descriptive_vs_evaluative": {
+      "rule": "Stating that a theme is present is descriptive (neutral). Judging how WELL the theme is handled is evaluative. The diagnostic is whether removing the evaluative adjective or adverb changes the sentence's force; if there is no such word and no implied judgement, it is neutral.",
+      "examples_synthetic": [
+        "'The film is about class.' -> THEME#SOCIAL_COMMENTARY / NULL / neutral.",
+        "'The film is devastatingly precise about class.' -> THEME#SOCIAL_COMMENTARY / NULL / positive.",
+        "'The film is about class, in case you missed the staircases.' -> THEME#SOCIAL_COMMENTARY / NULL / negative (implied judgement of heavy-handedness)."
+      ]
+    },
+    "non_opinion_spans": {
+      "rule": "Release dates, running times, credits lists, cast lists, cinema listings and biographical filler receive NO tuple unless evaluated. Reviews harvested from aggregators often carry boilerplate; annotators should skip it rather than assign neutral."
+    },
+    "multiple_opinion_holders": {
+      "rule": "Annotate only the REVIEWER's stance. Reported opinions ('audiences at Cannes gasped', 'some have called it overrated') are annotated under RECEPTION#AWARDS when the reception itself is the topic, and otherwise skipped - never recorded as the reviewer's own sentiment."
+    }
+  },
+  "changelog": {
+    "1.1": [
+      "SCREENPLAY#DIALOGUE: corrected the misquoted 'rich but still nice' / 'nice because they're rich' exchange.",
+      "CULTURAL_CONTEXT#GENERAL: replaced 'hagwon tutoring' with private tutoring (gwaoe); Ki-woo is a private home tutor, not a cram-school teacher.",
+      "merge_policy.dropped_before_annotation.SPECIAL_EFFECTS: justified by rarity in review discourse rather than claiming a 'largely practical production'.",
+      "CHARACTER#DESIGN prior_work: Thet (2010) mapping marked as inferred.",
+      "polarity_scheme: added note on SemEval edition compatibility for 'conflict'.",
+      "Replaced neutral examples that were credits/release facts (which non_opinion_spans says receive no tuple) with descriptive neutral sentences: MOVIE#GENERAL, ACTING#GENERAL, DIRECTION#GENERAL, SCREENPLAY#STRUCTURE, CINEMATOGRAPHY#GENERAL, MUSIC#GENERAL, EDITING#GENERAL, TRANSLATION#SUBTITLES, MOVIE#REWATCHABILITY.",
+      "hard_cases.mixed_sentiment_in_one_sentence: second target changed from 'the cast' to 'supporting cast'."
+    ]
+  }
+}
