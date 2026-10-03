@@ -31,6 +31,8 @@ USER_AGENT = (
 WIDTH = 400  # thumbnail width in px: plenty for a card, small in the repo
 FREE = re.compile(r"^(cc[ -]?by|cc[ -]?0|cc-zero|public domain|pd)", re.IGNORECASE)
 
+NOT_PORTRAIT = re.compile(r"signature|logo|poster|autograph", re.IGNORECASE)
+
 # Commons file titles chosen by hand, used instead of a search
 PINNED: dict[str, str] = {}
 
@@ -65,11 +67,17 @@ def candidates(name: str) -> list[str]:
     # Keep files whose title names the person, which rules out most group shots and posters
     parts = [p.lower() for p in re.split(r"[ -]", name)]
     titles = [r["title"] for r in found]
-    return [t for t in titles if all(p in t.lower() for p in parts)]
+    return [
+        t
+        for t in titles
+        if all(p in t.lower() for p in parts) and not NOT_PORTRAIT.search(t)
+    ]
 
 
 def strip_html(text: str) -> str:
-    return html.unescape(re.sub(r"<[^>]+>", "", text or "")).strip()
+    text = html.unescape(re.sub(r"<[^>]+>", "", text or "")).strip()
+    half = len(text) // 2  # Commons sometimes repeats the name in a hidden span
+    return text[:half] if len(text) % 2 == 0 and text[:half] == text[half:] else text
 
 
 def file_info(title: str) -> dict | None:
@@ -91,6 +99,7 @@ def file_info(title: str) -> dict | None:
         return None
     return {
         "thumb": info["thumburl"],
+        "mime": info["mime"],
         "author": strip_html(meta.get("Artist", {}).get("value", "")) or "Unknown",
         "licence": licence,
         "licence_url": meta.get("LicenseUrl", {}).get("value", ""),
@@ -125,7 +134,7 @@ def main() -> None:
                 time.sleep(3)  # be polite to the API
                 if info is None:
                     continue
-                ext = ".png" if info["thumb"].lower().endswith(".png") else ".jpg"
+                ext = ".png" if info["mime"] == "image/png" else ".jpg"
                 filename = slug(name) + ext
                 download(info["thumb"], PEOPLE_DIR / filename)
                 credits[name] = {"person": name, "file": filename, **info}
