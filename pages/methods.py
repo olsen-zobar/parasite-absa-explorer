@@ -137,12 +137,13 @@ DICTIONARY = {
         "reviewId": "Rotten Tomatoes review id (review_id in the other files)",
         "criticName, publicatioName": "Critic and publication (the column name's typo is original)",
         "isTopCritic": "Rotten Tomatoes 'top critic' status",
-        "creationDate": "Date the review was added to Rotten Tomatoes, not its publication date",
+        "rt_added_date": "Date the review was added to Rotten Tomatoes, not its publication date",
         "reviewState": "fresh or rotten",
         "originalScore_recovered": "The critic's own rating where given (e.g. 4/5), reconstructed",
         "originalScore_was_date_artifact": "True where the rating had been mangled into a date",
         "reviewUrl": "Link to the original article",
-        "n_sentences, n_tuples, …": "Per-review counts; mean_polarity_score is the review's average",
+        "n_sentences, n_tuples, …": "Per-review counts; mean_polarity_score is the review's average. "
+        "This site recomputes them from opinions.csv so the filters apply",
     },
     "sentences.csv: one row per sentence": {
         "review_id, sentence_id": "Review and the sentence's position in it (from 0)",
@@ -167,7 +168,7 @@ st.markdown(
   opinion.
 - **Intensity is not symmetric yet.** Negative tuples were audited for intensity; positive ones were
   not. Compare positive against negative, not very positive against very negative.
-- **Dates are Rotten Tomatoes dates.** `creationDate` is when the review was added to Rotten
+- **Dates are Rotten Tomatoes dates.** `rt_added_date` is when the review was added to Rotten
   Tomatoes, and some 2019 reviews carry 2022 dates. Publication dates are not in the data.
 - **Star ratings are reconstructed** for some reviews (see `originalScore_was_date_artifact`), and
   only 64 reviews have one.
