@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1650 790" width="1650" height="790">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/></marker></defs>
+<rect width="1650" height="790" fill="#FFFFFF"/>
+<text x="40" y="64" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4A6FA5" text-anchor="start">A · SCHEMA DEVELOPMENT</text>
+<rect x="40" y="80" width="262" height="290" rx="8" fill="#EAF0F8" stroke="#4A6FA5" stroke-width="1.6"/>
+<text x="56" y="110" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Literature review</text>
+<text x="56" y="132" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">Prior movie ABSA schemas</text>
+<text x="58" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="72" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Zhuang et al. (2006)</text>
+<text x="72" y="177.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">6 element + 6 people classes</text>
+<text x="58" y="204.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="72" y="204.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Thet et al. (2010)</text>
+<text x="72" y="223.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">6 aspects</text>
+<text x="58" y="250.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="72" y="250.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Parkhe &amp; Biswas (2014)</text>
+<text x="72" y="269.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">6 aspects</text>
+<text x="58" y="296.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="72" y="296.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">SemEval-2014–2016</text>
+<text x="72" y="315.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">ENTITY#ATTRIBUTE format</text>
+<rect x="332" y="80" width="262" height="290" rx="8" fill="#EAF0F8" stroke="#4A6FA5" stroke-width="1.6"/>
+<text x="348" y="110" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Schema design (v1.0)</text>
+<text x="348" y="132" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">Parasite-specific categories</text>
+<text x="350" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="364" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">15 entities, 23 E#A categories</text>
+<text x="350" y="184.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="364" y="184.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">People as targets, not categories</text>
+<text x="364" y="204.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">10 actor–character pairs, crew</text>
+<text x="350" y="230.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="364" y="230.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Include/exclude rules,</text>
+<text x="364" y="250.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">confusion pairs, hard cases</text>
+<text x="350" y="276.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="364" y="276.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Mapping to prior schemas</text>
+<text x="350" y="303.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="364" y="303.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Merge policy (&lt;2% frequency)</text>
+<rect x="624" y="80" width="262" height="290" rx="8" fill="#EAF0F8" stroke="#4A6FA5" stroke-width="1.6"/>
+<text x="640" y="110" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Fact-check &amp; revision (v1.1)</text>
+<text x="640" y="132" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">Schema finalised</text>
+<text x="642" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="656" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Film facts verified</text>
+<text x="656" y="177.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">against published sources</text>
+<text x="642" y="204.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="656" y="204.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Internal inconsistencies fixed</text>
+<text x="642" y="230.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="656" y="230.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">5-level polarity adopted;</text>
+<text x="656" y="250.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">conflict label removed</text>
+<text x="642" y="276.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4A6FA5" text-anchor="start">•</text>
+<text x="656" y="276.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Versioned changelog</text>
+<line x1="302" y1="225.0" x2="328" y2="225.0" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="594" y1="225.0" x2="620" y2="225.0" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="40" y="414" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4C8C5E" text-anchor="start">B · CORPUS CONSTRUCTION</text>
+<rect x="40" y="430" width="262" height="284" rx="8" fill="#EAF4EC" stroke="#4C8C5E" stroke-width="1.6"/>
+<text x="56" y="460" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Review collection</text>
+<text x="56" y="482" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">Rotten Tomatoes critic reviews</text>
+<text x="58" y="508" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="72" y="508" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">954 rows → 477 unique</text>
+<text x="72" y="527.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">duplicates removed</text>
+<text x="58" y="554.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="72" y="554.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">470 fresh / 7 rotten</text>
+<text x="58" y="580.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="72" y="580.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Snippets + source URLs</text>
+<text x="72" y="600.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">May 2019 – Mar 2023</text>
+<rect x="332" y="430" width="262" height="284" rx="8" fill="#EAF4EC" stroke="#4C8C5E" stroke-width="1.6"/>
+<text x="348" y="460" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Source triage</text>
+<text x="348" y="482" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">Classify each source URL</text>
+<text x="350" y="508" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="364" y="508" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">430 review articles</text>
+<text x="350" y="534.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="364" y="534.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">29 list articles</text>
+<text x="364" y="554.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">Parasite section only</text>
+<text x="350" y="580.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="364" y="580.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">17 videos</text>
+<text x="364" y="600.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">excluded (no text)</text>
+<text x="350" y="626.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="364" y="626.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">1 missing URL</text>
+<text x="364" y="646.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">excluded</text>
+<rect x="624" y="430" width="262" height="284" rx="8" fill="#EAF4EC" stroke="#4C8C5E" stroke-width="1.6"/>
+<text x="640" y="460" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Full-text corpus</text>
+<text x="640" y="482" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">Retrieved in three batches</text>
+<text x="642" y="508" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="656" y="508" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">33 → 57 → 108 reviews (v1–v3)</text>
+<text x="642" y="534.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="656" y="534.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">97 publications</text>
+<text x="642" y="561.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="656" y="561.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">22 top critics, 5 rotten</text>
+<text x="642" y="587.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="656" y="587.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">~534k characters</text>
+<text x="642" y="614.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4C8C5E" text-anchor="start">•</text>
+<text x="656" y="614.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">~3,741 sentences</text>
+<line x1="302" y1="572.0" x2="328" y2="572.0" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="594" y1="572.0" x2="620" y2="572.0" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="946" y="64" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#B07A2A" text-anchor="start">C · LLM-ASSISTED ANNOTATION</text>
+<rect x="946" y="80" width="370" height="634" rx="8" fill="#FBF3E6" stroke="#B07A2A" stroke-width="1.6"/>
+<text x="964" y="110" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Annotation (Claude Science)</text>
+<text x="964" y="132" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">One review at a time, sentence level</text>
+<text x="964" y="156" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#1F2328" text-anchor="start">Input: schema v1.1 + 108 full reviews</text>
+<rect x="964" y="172" width="334" height="56" rx="6" fill="#FFFFFF" stroke="#B07A2A" stroke-width="1.2"/>
+<circle cx="990" cy="200.0" r="13" fill="#B07A2A"/>
+<text x="990" y="205.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="1014" y="196" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1F2328" text-anchor="start">Aspect term extraction</text>
+<text x="1014" y="215" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="start">Explicit span or implicit (NULL)</text>
+<rect x="964" y="236" width="334" height="56" rx="6" fill="#FFFFFF" stroke="#B07A2A" stroke-width="1.2"/>
+<circle cx="990" cy="264.0" r="13" fill="#B07A2A"/>
+<text x="990" y="269.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="1014" y="260" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1F2328" text-anchor="start">Aspect category classification</text>
+<text x="1014" y="279" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="start">23 ENTITY#ATTRIBUTE categories</text>
+<rect x="964" y="300" width="334" height="56" rx="6" fill="#FFFFFF" stroke="#B07A2A" stroke-width="1.2"/>
+<circle cx="990" cy="328.0" r="13" fill="#B07A2A"/>
+<text x="990" y="333.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="1014" y="324" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1F2328" text-anchor="start">Opinion term extraction</text>
+<text x="1014" y="343" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="start">Explicit span or implicit (NULL)</text>
+<rect x="964" y="364" width="334" height="56" rx="6" fill="#FFFFFF" stroke="#B07A2A" stroke-width="1.2"/>
+<circle cx="990" cy="392.0" r="13" fill="#B07A2A"/>
+<text x="990" y="397.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="1014" y="388" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1F2328" text-anchor="start">Sentiment polarity</text>
+<text x="1014" y="407" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="start">Very negative … very positive (−2 to +2)</text>
+<rect x="964" y="428" width="334" height="56" rx="6" fill="#FFFFFF" stroke="#B07A2A" stroke-width="1.2"/>
+<circle cx="990" cy="456.0" r="13" fill="#B07A2A"/>
+<text x="990" y="461.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="1014" y="452" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1F2328" text-anchor="start">Emotion detection</text>
+<text x="1014" y="471" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="start">Plutchik: 8 emotions × 3 intensities, dyads</text>
+<line x1="1131.0" y1="490" x2="1131.0" y2="512" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="964" y="516" width="334" height="56" rx="6" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.4"/>
+<text x="1131.0" y="540" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">⟨aspect, category, opinion, polarity, emotion⟩</text>
+<text x="1131.0" y="559" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="middle">ACOS quadruple extended with emotion</text>
+<rect x="964" y="598" width="132" height="58" rx="6" fill="#FFFFFF" stroke="#B07A2A" stroke-width="1.2"/>
+<text x="1030.0" y="623" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">Pilot</text>
+<text x="1030.0" y="642" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="middle">5 reviews</text>
+<rect x="1166" y="598" width="132" height="58" rx="6" fill="#FFFFFF" stroke="#B07A2A" stroke-width="1.2"/>
+<text x="1232.0" y="623" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">Full run</text>
+<text x="1232.0" y="642" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="middle">108 reviews</text>
+<line x1="1096" y1="627" x2="1162" y2="627" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="1131.0" y="617" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#57606A" text-anchor="middle">approve</text>
+<path d="M1045.84,656 L1045.84,676 L1014.16,676 L1014.16,660" fill="none" stroke="#5F6368" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<text x="1055.84" y="680" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#57606A" text-anchor="start">revise guidelines</text>
+<line x1="886" y1="225.0" x2="942" y2="225.0" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="886" y1="572.0" x2="942" y2="572.0" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="1376" y="64" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#6E5A9E" text-anchor="start">D · VALIDATION</text>
+<rect x="1376" y="80" width="250" height="322" rx="8" fill="#F1EDF7" stroke="#6E5A9E" stroke-width="1.6"/>
+<text x="1392" y="110" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Quality checks</text>
+<text x="1392" y="132" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#57606A" text-anchor="start" font-style="italic">Automated + human</text>
+<text x="1394" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#6E5A9E" text-anchor="start">•</text>
+<text x="1408" y="158" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Span check</text>
+<text x="1408" y="177.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">terms match source offsets</text>
+<text x="1394" y="204.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#6E5A9E" text-anchor="start">•</text>
+<text x="1408" y="204.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Label validity</text>
+<text x="1408" y="223.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">and completeness</text>
+<text x="1394" y="250.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#6E5A9E" text-anchor="start">•</text>
+<text x="1408" y="250.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Self-consistency</text>
+<text x="1408" y="269.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">10 reviews re-annotated</text>
+<text x="1394" y="296.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#6E5A9E" text-anchor="start">•</text>
+<text x="1408" y="296.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Human gold set</text>
+<text x="1408" y="315.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">~10 reviews, κ per category</text>
+<text x="1394" y="342.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#6E5A9E" text-anchor="start">•</text>
+<text x="1408" y="342.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Low-confidence tuples</text>
+<text x="1408" y="361.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">manually adjudicated</text>
+<line x1="1316" y1="170" x2="1372" y2="170" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M1376,342 L1320,342" fill="none" stroke="#5F6368" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<text x="1346.0" y="334" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#57606A" text-anchor="middle">correct</text>
+<text x="1376" y="444" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#5F6368" text-anchor="start">E · OUTPUTS</text>
+<rect x="1376" y="460" width="250" height="162" rx="8" fill="#F3F3F3" stroke="#5F6368" stroke-width="1.6"/>
+<text x="1392" y="490" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#1F2328" text-anchor="start">Annotated dataset</text>
+<text x="1394" y="516" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#5F6368" text-anchor="start">•</text>
+<text x="1408" y="516" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">opinions.csv</text>
+<text x="1408" y="535.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#57606A" text-anchor="start">one row per tuple</text>
+<text x="1394" y="562.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#5F6368" text-anchor="start">•</text>
+<text x="1408" y="562.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">sentences.csv · reviews.csv</text>
+<text x="1394" y="588.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#5F6368" text-anchor="start">•</text>
+<text x="1408" y="588.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1F2328" text-anchor="start">Run log, schema gaps</text>
+<line x1="1501.0" y1="402" x2="1501.0" y2="456" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="1376" y="650" width="250" height="60" rx="8" fill="#FFFFFF" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="1501.0" y="678" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1F2328" text-anchor="middle">Streamlit dashboard</text>
+<text x="1501.0" y="698" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="middle" font-style="italic">future work</text>
+<line x1="1501.0" y1="622" x2="1501.0" y2="648" stroke="#5F6368" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<line x1="40" y1="760" x2="90" y2="760" stroke="#5F6368" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="100" y="765" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="start">Data flow</text>
+<line x1="200" y1="760" x2="250" y2="760" stroke="#5F6368" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<text x="260" y="765" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#57606A" text-anchor="start">Feedback loop / future work</text>
+</svg>

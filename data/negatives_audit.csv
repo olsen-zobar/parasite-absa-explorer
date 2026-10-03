@@ -1,0 +1,169 @@
+review_id,sentence_id,aspect_term,category,opinion_term,polarity_before,auditor_sign,auditor_strength,auditor_reason,polarity_after,action
+2588703,4,,STORY#PACING,could perhaps be a bit more lean and mean,-1,-1,1,,-1,unchanged
+2588703,4,jeopardy and payoff,STORY#PLOT,with more despatch,-1,-1,1,,-1,unchanged
+2589156,2,comedic thriller,MOVIE#GENERAL,isn’t something that lives or dies on precipitous revelations,-1,1,1,stated not needing twist reliance is neutral-to-positive framing of genre fit,1,sign flipped
+2589156,4,Parasite,MOVIE#GENERAL,falls slightly short of Bong’s greatest work,-1,-1,1,,-1,unchanged
+2589156,9,characters,ACTING#GENERAL,lack a degree of nuance,-1,-1,1,,-1,unchanged
+2589156,9,characters,STORY#PLOT,often behaving in outrageous or contrived ways,-1,-1,1,,-1,unchanged
+2589156,10,portrayals,ACTING#GENERAL,caricatured,-1,-1,1,,-1,unchanged
+2589156,10,film’s core values,THEME#SOCIAL_COMMENTARY,at times muddy,-1,-1,1,,-1,unchanged
+2589156,11,Parasite,MOVIE#GENERAL,comes up lacking at key crossroads,-1,-1,1,,-1,unchanged
+2589156,17,semi-basement slum,PRODUCTION_DESIGN#GENERAL,"run-down, practically falling apart",-1,-1,1,,-1,unchanged
+2589156,25,Parasite,MOVIE#GENERAL,isn’t quite able to clear,-1,-1,1,,-1,unchanged
+2589371,6,scale,STORY#PLOT,far smaller,-1,-1,1,,-1,unchanged
+2589371,39,family,THEME#SOCIAL_COMMENTARY,chasing dead-end dreams,-1,-1,1,,-1,unchanged
+2589371,48,basement,PRODUCTION_DESIGN#GENERAL,filthy,-1,-1,2,,-1,unchanged
+2589371,54,realisation,STORY#ENDING,sorrowful all-too-late,-1,-1,2,,-2,intensity changed
+2590896,17,Parasite,MOVIE#GENERAL,the sweetness and empathy of Hirokazu Kore-eda’s Palme d’Or winner are removed,-1,-1,1,,-1,unchanged
+2600298,5,,THEME#SYMBOLISM,scuttling like cockroaches,-1,-1,1,,-1,unchanged
+2600298,11,family,STORY#PLOT,a four-headed beast that operates as a single entity and shows little mercy,-1,-1,1,,-1,unchanged
+2600298,12,Song Kang-ho,ACTING#GENERAL,greyer than previously but no more dignified,-1,-1,1,,-1,unchanged
+2600822,8,houses,PRODUCTION_DESIGN#GENERAL,brutalist concrete prisons,-1,-1,2,,-1,unchanged
+2621192,6,,STORY#PACING,entirely too easy,-1,-1,2,,-2,intensity changed
+2621192,9,coda,STORY#ENDING,overlong,-1,-1,2,,-2,intensity changed
+2621192,9,coda,STORY#ENDING,more literal than it needs to be,-1,-1,1,,-1,unchanged
+2622817,13,window,THEME#SYMBOLISM,people with a luxurious view still can’t see the things that count,-1,-1,1,,-1,unchanged
+2623333,15,,RECEPTION#AWARDS,overhyped by critics,-1,-1,1,,-1,unchanged
+2625540,33,Long Walk,MOVIE#GENERAL,"tough, demanding film",-1,-1,1,,-1,unchanged
+2631640,29,,THEME#SOCIAL_COMMENTARY,only bitterness and disappointment await,-1,-1,1,,-1,unchanged
+2632497,27,narrative payoffs,STORY#PLOT,contrived,-1,-1,1,,-1,unchanged
+2632497,30,Snowpiercer,STORY#PLOT,hollow intensity of a video game,-1,-1,1,,-1,unchanged
+2632778,2,titular housemaid,ACTING#GENERAL,maniacal,-1,-1,1,,-1,unchanged
+2632778,10,scheme,STORY#PLOT,so improbable,-1,-1,1,,-1,unchanged
+2634426,33,Kim family’s reversal of fortune,STORY#ENDING,no turnabout-is-fair-play satisfaction,-1,-1,1,,-1,unchanged
+2634426,35,Eden,THEME#SYMBOLISM,luxury comes at immense hidden cost,-1,-1,2,immense hidden cost is intensified negative,-2,intensity changed
+2635204,44,Da-song,ACTING#GENERAL,not so much a gifted artist as a hyperactive misfit,-1,-1,1,,-1,unchanged
+2635738,2,class dynamics and inequality,THEME#SOCIAL_COMMENTARY,insidious,-1,-1,1,,-1,unchanged
+2635738,3,,THEME#SOCIAL_COMMENTARY,superficial view,-1,-1,1,,-1,unchanged
+2636098,7,Parasite,STORY#GENRE,on the nose to the point of near absurdism,-1,-1,1,,-1,unchanged
+2636098,9,Kim family,PRODUCTION_DESIGN#GENERAL,absolute squalor,-1,-1,2,absolute is an intensifier,-2,intensity changed
+2636098,14,run time,STORY#PACING,admittedly too-long,-1,-1,2,too-long intensified by admittedly too,-2,intensity changed
+2636098,24,film,STORY#PACING,a pinch too long,-1,-1,1,,-1,unchanged
+2636576,7,poor,THEME#SOCIAL_COMMENTARY,desperate stank,-1,-1,1,,-1,unchanged
+2636576,9,film,MOVIE#GENERAL,does not come with the kind of scratch and sniff accessories,-1,-1,1,,-1,unchanged
+2636576,19,chess move,STORY#TWIST,devastating impact,-1,1,2,devastating impact approvingly describes effective twist,2,sign flipped
+2636576,22,film,STORY#PLOT,eschews ambiguity or any other messy bits,-1,1,1,eschewing messiness praised as meticulous strength,1,sign flipped
+2636576,23,relationships,STORY#PLOT,sometimes felt straightforward when they could have been murky and complicated,-1,-1,1,,-1,unchanged
+2636576,24,Bong Joon Ho,DIRECTION#GENERAL,heavy-handed,-1,-1,1,,-1,unchanged
+2636576,26,Bong,DIRECTION#GENERAL,wields his cinematic prowess like a blunt force weapon,-1,1,1,"cinematic prowess used skillfully, approving",1,sign flipped
+2637297,8,opening act,STORY#PACING,Subtlety is similarly unemployed,-1,-1,1,,-1,unchanged
+2637297,20,,TONE#HUMOR,far less funny,-1,-1,2,far less funny has comparative intensifier far,-2,intensity changed
+2638526,6,dad,ACTING#GENERAL,schemes have never paid off,-1,-1,1,,-1,unchanged
+2638526,16,narrative,STORY#PLOT,problems,-1,-1,1,,-1,unchanged
+2638526,17,Kims,ACTING#GENERAL,essential disconnect,-1,-1,1,,-1,unchanged
+2638808,14,script,SCREENPLAY#STRUCTURE,simpler,-1,-1,1,,-1,unchanged
+2638808,14,script,SCREENPLAY#STRUCTURE,clumsier,-1,-1,1,,-1,unchanged
+2638808,24,mirror Bong holds up to society,MOVIE#GENERAL,imperfection,-1,-1,1,,-1,unchanged
+2638808,24,coda,STORY#ENDING,unnecessary,-1,-1,1,,-1,unchanged
+2638808,24,director,DIRECTION#GENERAL,doubting his ability,-1,-1,1,,-1,unchanged
+2638902,4,,STORY#GENRE,billed as a kind of South Korean anti-capitalism satire,-1,-1,1,,-1,unchanged
+2638902,4,,MOVIE#GENERAL,comes off more as an empty plate,-1,-1,1,,-1,unchanged
+2638902,5,tale,STORY#PLOT,somewhat combo,-1,-1,1,,-1,unchanged
+2638902,5,mates turned sour spree,STORY#PLOT,exceedingly twisted,-1,-1,2,exceedingly = intensifier,-2,intensity changed
+2638902,6,ploy,STORY#PLOT,backfires into over the top mayhem,-1,-1,1,,-1,unchanged
+2638902,8,,THEME#SOCIAL_COMMENTARY,for the amusement of the giddy bourgeois popcorn audience,-1,-1,1,,-1,unchanged
+2638902,9,portrayal of human nature,THEME#SOCIAL_COMMENTARY,condescending,-1,-1,1,,-1,unchanged
+2638902,9,portrayal of human nature,THEME#SOCIAL_COMMENTARY,pessimistic,-1,-1,1,,-1,unchanged
+2638902,9,portrayal of human nature,THEME#SOCIAL_COMMENTARY,bereft of class consciousness or ideology,-1,-1,1,,-1,unchanged
+2638902,10,working class,THEME#SOCIAL_COMMENTARY,sole motivation is to go to extremes,-1,-1,1,,-1,unchanged
+2639626,5,social commentary,THEME#SOCIAL_COMMENTARY,searing,-2,1,2,searing used approvingly of social commentary,2,sign flipped
+2640533,49,war,THEME#SOCIAL_COMMENTARY,devoid of victors,-1,-1,1,,-1,unchanged
+2641418,1,movie,MOVIE#GENERAL,can’t live up to it,-1,-1,1,,-1,unchanged
+2641485,23,Parasite,MOVIE#GENERAL,too bizarre to catch on with a larger audience,-1,-1,2,too = intensifier,-2,intensity changed
+2642326,18,coda,STORY#ENDING,simply doesn't work,-1,-1,1,,-1,unchanged
+2642326,27,film,STORY#PACING,a bit overlong,-1,-1,1,,-1,unchanged
+2642326,29,story,STORY#PLOT,I have some reservations,-1,-1,1,,-1,unchanged
+2642326,35,Kims' home,THEME#SYMBOLISM,"filthy and barely tolerable, but human",-1,-1,1,,-1,unchanged
+2642326,35,Parks' posh dwelling,THEME#SYMBOLISM,could not possibly actually live there,-1,-1,1,,-1,unchanged
+2642326,36,,THEME#SYMBOLISM,inorganic,-1,-1,1,,-1,unchanged
+2642326,56,coda,STORY#ENDING,simply doesn't work,-1,-1,1,,-1,unchanged
+2642326,65,film,STORY#PACING,a bit overlong,-1,-1,1,,-1,unchanged
+2642326,67,story,STORY#PLOT,I have some reservations,-1,-1,1,,-1,unchanged
+2642326,73,Kims' home,THEME#SYMBOLISM,"filthy and barely tolerable, but human",-1,-1,1,,-1,unchanged
+2642326,73,Parks' posh dwelling,THEME#SYMBOLISM,could not possibly actually live there,-1,-1,1,,-1,unchanged
+2642326,74,,THEME#SYMBOLISM,inorganic,-1,-1,1,,-1,unchanged
+2643562,8,symbiotic relationship,THEME#SOCIAL_COMMENTARY,disturbing,-1,-1,1,,-1,unchanged
+2643562,9,themes,THEME#SOCIAL_COMMENTARY,don’t offer anything new,-1,-1,1,,-1,unchanged
+2643562,17,film,TONE#TENSION,unsettling,-1,-1,1,,-1,unchanged
+2643562,18,Parasite,MOVIE#GENERAL,disturbing,-1,-1,1,,-1,unchanged
+2643677,2,first half,STORY#PACING,slightly padded-out,-1,-1,1,,-1,unchanged
+2643677,4,pacing,STORY#PACING,consistently erratic,-1,-1,1,,-1,unchanged
+2644367,14,,TONE#HUMOR,caustic,-1,-1,1,,-1,unchanged
+2644367,14,,TONE#HUMOR,dark,-1,-1,1,,-1,unchanged
+2646134,4,Parasite,MOVIE#GENERAL,slightly challenging,-1,-1,1,,-1,unchanged
+2646134,13,scene,STORY#PLOT,rather disturbing,-1,-1,1,,-1,unchanged
+2646588,11,,THEME#SOCIAL_COMMENTARY,laughable,-1,-1,1,,-1,unchanged
+2647429,30,Kims,ACTING#GENERAL,implausible,-1,-1,1,,-1,unchanged
+2649711,16,space,PRODUCTION_DESIGN#GENERAL,"cramped, lack of ventilated",-1,-1,1,,-1,unchanged
+2649711,16,rich family’s residence,PRODUCTION_DESIGN#GENERAL,lacking in any warmth,-1,-1,1,,-1,unchanged
+2649711,18,explicitness,STORY#GENRE,works against the film,-1,-1,1,,-1,unchanged
+2649711,19,,MOVIE#GENERAL,will not appeal to everyone,-1,-1,1,,-1,unchanged
+2654626,34,class war parable,STORY#PLOT,obvious,-1,-1,1,,-1,unchanged
+2659936,4,comedy,TONE#HUMOR,toothless,-1,-1,1,,-1,unchanged
+2659936,5,excellence,MOVIE#GENERAL,greatly exaggerated,-2,-1,2,,-2,unchanged
+2659936,6,movie,MOVIE#GENERAL,could have been great,-1,-1,1,,-1,unchanged
+2659936,6,premise,STORY#PLOT,lost purchase on,-1,-1,1,,-1,unchanged
+2659936,26,,MOVIE#GENERAL,among the weaker,-1,-1,1,,-1,unchanged
+2659936,27,comedy,STORY#GENRE,tired,-1,-1,1,,-1,unchanged
+2659936,31,,STORY#GENRE,insubstantial,-1,-1,1,,-1,unchanged
+2659936,31,,THEME#SOCIAL_COMMENTARY,nothing terribly relevant or urgent,-1,-1,1,,-1,unchanged
+2659936,33,satire,THEME#SOCIAL_COMMENTARY,nothing to fear,-1,-1,1,,-1,unchanged
+2659936,35,,THEME#SOCIAL_COMMENTARY,to frighten the horses,-1,-1,1,,-1,unchanged
+2659936,39,story-line,STORY#PLOT,inferior to Shoplifters in terms of holding a cohesive,-1,-1,1,,-1,unchanged
+2659936,39,denouement,STORY#ENDING,tiresome anarchic,-1,-1,1,,-1,unchanged
+2659936,40,,THEME#SOCIAL_COMMENTARY,we couldn't care less,-1,-1,1,,-1,unchanged
+2659936,43,satire,THEME#SOCIAL_COMMENTARY,hardly effective,-1,-1,2,"hardly effective is strongly negating intensifier-like, extreme negation",-1,unchanged
+2659936,48,,THEME#SOCIAL_COMMENTARY,nothing too profound,-1,-1,1,,-1,unchanged
+2659936,49,,CULTURAL_CONTEXT#GENERAL,failed to discern,-1,-1,1,,-1,unchanged
+2665556,3,,TONE#HUMOR,almost disturbingly easy to laugh,-1,-1,2,disturbingly intensifies,-2,intensity changed
+2666969,2,,RECEPTION#AWARDS,overhype that leaves some a little disappointed,-1,-1,1,,-1,unchanged
+2667786,28,movie’s message,STORY#PLOT,not clear cut,-1,-1,1,,-1,unchanged
+2667788,19,plot,STORY#PLOT,a few too many loose threads,-1,-1,2,too many is an intensifier,-2,intensity changed
+2667788,23,remake,MOVIE#GENERAL,difficult to imagine,-1,-1,1,,-1,unchanged
+2667842,11,dismantling of the revered housekeeper,STORY#PLOT,cruelly capitalising on her peach allergy,-1,-1,1,,-1,unchanged
+2667890,7,rich,ACTING#GENERAL,don’t stir anything in your heart,-1,-1,1,,-1,unchanged
+2667890,9,,THEME#SOCIAL_COMMENTARY,incipient intolerance,-1,-1,1,,-1,unchanged
+2667890,9,,THEME#SOCIAL_COMMENTARY,all its ugliness,-1,-1,1,,-1,unchanged
+2667890,10,,THEME#SOCIAL_COMMENTARY,in the way they humiliate the poor,-1,-1,1,,-1,unchanged
+2667890,16,semi-basements,PRODUCTION_DESIGN#GENERAL,low life,-1,-1,1,,-1,unchanged
+2667890,17,bunkers,THEME#SYMBOLISM,deprived of their rightful share of sunshine,-1,-1,1,,-1,unchanged
+2668413,7,,TONE#TENSION,devolved into a Grand Guignol of hyper-stylized violence,-1,-1,2,,-2,intensity changed
+2668413,14,Parasite,MOVIE#GENERAL,"rash conglomeration of slander, sewage, and slaughter",-1,-1,2,,-1,unchanged
+2668413,16,,MOVIE#GENERAL,misshapen concoction,-1,-1,1,,-1,unchanged
+2668413,18,,STORY#PLOT,spastic results,-1,-1,1,,-1,unchanged
+2668413,23,duality,STORY#PLOT,does not necessarily make clarity,-1,-1,1,,-1,unchanged
+2669858,26,Ki-taek,ACTING#GENERAL,disgraced,-1,-1,1,,-1,unchanged
+2669858,26,Ki-taek,ACTING#GENERAL,devastated,-1,-1,2,devastated is an extreme/reinforcing word,-2,intensity changed
+2670906,18,designs,PRODUCTION_DESIGN#GENERAL,lose some of the beauty,-1,-1,1,,-1,unchanged
+2671934,17,scheming,STORY#PLOT,unsustainable,-1,-1,1,,-1,unchanged
+2683075,21,Things that happen,STORY#PLOT,just dont seem right,-1,-1,1,,-1,unchanged
+2683075,30,,TONE#HUMOR,Nothing to me appeared funny,-1,-1,1,,-1,unchanged
+2683075,31,satire,STORY#GENRE,not at its best,-1,-1,1,,-1,unchanged
+2683075,32,,MOVIE#GENERAL,ugliness filled in the rest,-1,-1,1,,-1,unchanged
+2683075,34,character,ACTING#GENERAL,we shout about,-1,-1,1,,-1,unchanged
+2694379,24,invasion,STORY#PLOT,callous,-1,-1,1,,-1,unchanged
+2694379,24,invasion,STORY#PLOT,casually cruel,-1,-1,1,,-1,unchanged
+2707936,32,Act Three,STORY#PACING,overstays its welcome,-1,-1,1,,-1,unchanged
+2755044,7,,THEME#SOCIAL_COMMENTARY,pretensions toward something profound and topical,-1,-1,1,,-1,unchanged
+2755044,7,Bong’s style,DIRECTION#GENERAL,controlling didacticism,-1,-1,1,,-1,unchanged
+2755044,7,narrative construct,STORY#PLOT,end result,-1,-1,1,,-1,unchanged
+2755044,8,film,MOVIE#GENERAL,too insincere and hypocritical,-1,-1,2,too insincere contains intensifier 'too',-2,intensity changed
+2755044,9,narrative,STORY#PLOT,tricks,-1,-1,1,,-1,unchanged
+2755044,9,narrative,STORY#PLOT,conceits,-1,-1,1,,-1,unchanged
+2755044,9,,THEME#SOCIAL_COMMENTARY,drain the film of any true socio-political import,-1,-1,1,,-1,unchanged
+2755044,10,spatial and positional metaphors,THEME#SYMBOLISM,oppressive,-1,-1,2,oppressive is intensified negative,-2,intensity changed
+2755044,10,film,STORY#PLOT,obviousness of rhetorical intent,-1,-1,1,,-1,unchanged
+2755044,12,Kim family,ACTING#GENERAL,cartoonish levels of confidence and duplicity,-1,-1,1,,-1,unchanged
+2755044,12,Kim family,THEME#SOCIAL_COMMENTARY,dehumanised,-1,-1,1,,-1,unchanged
+2755044,13,narrative cogs,SCREENPLAY#STRUCTURE,too obtrusive,-1,-1,2,,-2,intensity changed
+2755044,13,narrative cogs,SCREENPLAY#STRUCTURE,too insincere,-1,-1,2,,-2,intensity changed
+2755044,13,narrative cogs,SCREENPLAY#STRUCTURE,too removed from reality,-1,-1,2,,-2,intensity changed
+2755044,13,politicking,THEME#SOCIAL_COMMENTARY,devalues,-1,-1,1,,-1,unchanged
+2755044,14,metaphors,THEME#SYMBOLISM,clunky,-1,-1,1,,-1,unchanged
+2755044,14,,DIRECTION#GENERAL,didacticism,-1,-1,1,,-1,unchanged
+2755044,17,flood,THEME#SYMBOLISM,inelegant metaphor,-1,-1,1,,-1,unchanged
+2755044,17,motif,THEME#SYMBOLISM,too-obvious,-1,-1,2,,-2,intensity changed
+2800898,17,,STORY#PLOT,"Life is rough, smelly, and desperate",-1,-1,1,,-1,unchanged
+2801457,21,Snowpiercer,MOVIE#GENERAL,never really found an audience,-1,-1,1,,-1,unchanged
+102723468,31,dialogue,SCREENPLAY#DIALOGUE,too pointed,-1,-1,2,,-2,intensity changed
+102723468,39,final act,STORY#ENDING,bleak,-1,-1,1,,-1,unchanged
