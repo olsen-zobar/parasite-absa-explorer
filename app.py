@@ -11,6 +11,8 @@ require_password()
 
 pages = [
     st.Page("pages/home.py", title="Home", icon="🏠", default=True),
+    st.Page("pages/review_explorer.py", title="Review Explorer", icon="📰"),
+    st.Page("pages/aspects.py", title="Aspect Explorer", icon="🔍"),
     st.Page("pages/methods.py", title="Methods & Data", icon="📚"),
     st.Page("pages/cast_crew.py", title="Cast & Crew", icon="🎭"),
 ]
