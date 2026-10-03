@@ -15,6 +15,8 @@ pages = [
     st.Page("pages/aspects.py", title="Aspect Explorer", icon="🔍"),
     st.Page("pages/methods.py", title="Methods & Data", icon="📚"),
     st.Page("pages/cast_crew.py", title="Cast & Crew", icon="🎭"),
+    st.Page("pages/stars.py", title="Stars vs. Words", icon="⭐"),
+    st.Page("pages/kwic.py", title="Keyword in context", icon="🔎"),
 ]
 nav = st.navigation(pages)
 sidebar_filters()
