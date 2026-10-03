@@ -12,6 +12,8 @@ require_password()
 pages = [
     st.Page("pages/home.py", title="Home", icon="🏠", default=True),
     st.Page("pages/methods.py", title="Methods & Data", icon="📚"),
+    st.Page("pages/stars.py", title="Stars vs. Words", icon="⭐"),
+    st.Page("pages/kwic.py", title="Keyword in context", icon="🔎"),
 ]
 nav = st.navigation(pages)
 sidebar_filters()
