@@ -38,7 +38,7 @@ PINNED: dict[str, str] = {}
 def get(params: dict) -> dict:
     params = {**params, "format": "json", "formatversion": "2", "maxlag": "5"}
     url = f"{API}?{urllib.parse.urlencode(params)}"
-    for attempt in range(6):
+    for attempt in range(7):
         req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
@@ -115,31 +115,38 @@ def main() -> None:
         with CREDITS_PATH.open(newline="", encoding="utf-8") as f:
             credits = {row["person"]: row for row in csv.DictReader(f)}
 
-    for name, _, _ in ROSTER:
-        if name in NO_PHOTO or name in credits:
-            continue
-        print(name)
-        for title in candidates(name):
-            info = file_info(title)
-            time.sleep(1)  # be polite to the API
-            if info is None:
+    try:
+        for name, _, _ in ROSTER:
+            if name in NO_PHOTO or name in credits:
                 continue
-            ext = ".png" if info["thumb"].lower().endswith(".png") else ".jpg"
-            filename = slug(name) + ext
-            download(info["thumb"], PEOPLE_DIR / filename)
-            credits[name] = {"person": name, "file": filename, **info}
-            print(f"  {title} ({info['licence']})")
-            break
-        else:
-            print("  no freely licensed portrait found")
+            print(name)
+            for title in candidates(name):
+                info = file_info(title)
+                time.sleep(3)  # be polite to the API
+                if info is None:
+                    continue
+                ext = ".png" if info["thumb"].lower().endswith(".png") else ".jpg"
+                filename = slug(name) + ext
+                download(info["thumb"], PEOPLE_DIR / filename)
+                credits[name] = {"person": name, "file": filename, **info}
+                write_credits(credits)  # save as we go, so a later failure loses nothing
+                print(f"  {title} ({info['licence']})")
+                break
+            else:
+                print("  no freely licensed portrait found")
+    except RuntimeError as err:
+        print(f"Stopped early: {err}. Re-run to fetch the rest.", file=sys.stderr)
+    write_credits(credits)
+    print(f"{len(credits)} photos credited in {CREDITS_PATH.relative_to(ROOT)}")
 
+
+def write_credits(credits: dict) -> None:
+    order = [n for n, _, _ in ROSTER]
     with CREDITS_PATH.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=CREDIT_COLUMNS, extrasaction="ignore")
         writer.writeheader()
-        order = [n for n, _, _ in ROSTER]
         for name in sorted(credits, key=order.index):
             writer.writerow(credits[name])
-    print(f"{len(credits)} photos credited in {CREDITS_PATH.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
